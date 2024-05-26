@@ -1,4 +1,18 @@
 package com.renta.renta.business.concretes;
 
-public class CarManager {
+import com.renta.renta.business.abstracts.CarService;
+
+import com.renta.renta.dataAccess.CarRepository;
+
+import lombok.AllArgsConstructor;
+
+import org.springframework.stereotype.Service;
+
+
+@Service
+@AllArgsConstructor
+public class CarManager implements CarService {
+
+    //private CarRepository carRepository;
+
 }

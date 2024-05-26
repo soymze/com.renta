@@ -20,5 +20,7 @@ public class User extends BaseEntity<Integer> {
     @Column(name="name")
     private String userName;
     @Column(name="password")
-    private String userPassword;
+    private String password;
+    @Column(name="mail")
+    private String mail;
 }
