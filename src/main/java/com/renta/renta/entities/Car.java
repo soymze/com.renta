@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,9 +23,7 @@ public class Car extends BaseEntity<Integer> {
     @Column(name="model")
     private String model;
     @Column(name="year")
-    private int year;
-    @Column(name="availability")
-    private boolean availability;
+    private Integer year;
     @Column(name="color")
     private String color;
     @Column(name="speed")
@@ -33,5 +33,5 @@ public class Car extends BaseEntity<Integer> {
     @Column(name="type")
     private String type;
     @Column(name="price")
-    private int price;
+    private Integer price;
 }

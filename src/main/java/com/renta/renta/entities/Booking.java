@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,5 +24,5 @@ public class Booking extends BaseEntity<Integer> {
 
     private Double price;
 
-    //rezervasyonid
+    private LocalDate bookDate;
 }
