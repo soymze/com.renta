@@ -2,6 +2,7 @@ package com.renta.renta.entities;
 
 import com.renta.renta.core.BaseEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -18,9 +19,12 @@ import java.util.List;
 public class User extends BaseEntity<Integer> {
 
     @Column(name="name")
+    @NotNull(message = "name may not be null")
     private String userName;
     @Column(name="password")
+    @NotNull(message = "password may not be null")
     private String password;
     @Column(name="mail")
+    @NotNull(message = "mail may not be null")
     private String mail;
 }

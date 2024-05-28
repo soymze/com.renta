@@ -25,10 +25,10 @@ public class CarController {
                                               @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate startDate, @RequestParam("endDate")
     @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate endDate,
                                           @RequestParam(value = "brand", required = false) String brand,
-                                          @RequestParam(value = "model", required = false) String model,
+                                          @RequestParam(value = "type", required = false) String type,
                                           @RequestParam(value = "year", required = false) Integer year,
                                           @RequestParam(value = "fuel", required = false) String fuel,
                                           Pageable pageable) {
-        return carManager.search(startDate, endDate, brand, model, year, fuel, pageable);
+        return carManager.search(startDate, endDate, brand, type, year, fuel, pageable);
     }
 }

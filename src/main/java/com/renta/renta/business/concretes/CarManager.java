@@ -25,15 +25,15 @@ public class CarManager implements CarService {
 
     private ModelMapperManager modelMapperManager;
 
-    public List<GetAllCarResponse> search(LocalDate startDate, LocalDate endDate, String brand, String model, Integer year, String fuel, Pageable pageable) {
+    public List<GetAllCarResponse> search(LocalDate startDate, LocalDate endDate, String brand, String type, Integer year, String fuel, Pageable pageable) {
         Specification<Car> baseSpecification = Specification.where(CarSpecifications.hasNotBooked(startDate, endDate));
 
         if (StringUtils.isNotEmpty(brand)) {
             baseSpecification = baseSpecification.and(CarSpecifications.hasBrand(brand));
         }
 
-        if (StringUtils.isNotEmpty(model)) {
-            baseSpecification = baseSpecification.and(CarSpecifications.hasModel(model));
+        if (StringUtils.isNotEmpty(type)) {
+            baseSpecification = baseSpecification.and(CarSpecifications.hasType(type));
         }
 
         if (year != null) {

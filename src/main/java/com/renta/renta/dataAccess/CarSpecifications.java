@@ -14,17 +14,14 @@ public class CarSpecifications {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("brand"), brand);
     }
 
-    public static Specification<Car> hasModel(String model) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("model"), model);
+    public static Specification<Car> hasType(String type) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("type"), type);
     }
 
     public static Specification<Car> hasYear(int year) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("year"), year);
     }
 
-    public static Specification<Car> hasColor(String color) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("color"), color);
-    }
 
     public static Specification<Car> hasFuel(String fuel) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("fuel"), fuel);

@@ -15,4 +15,5 @@ public class GetAllCarResponse {
     private int year;
     private String fuel;
     private int price;
+    private String img_url;
 }
