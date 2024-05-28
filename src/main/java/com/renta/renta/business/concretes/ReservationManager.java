@@ -63,7 +63,7 @@ public class ReservationManager implements ReservationService {
             booking.setCreatedDate(now);
             booking.setUpdatedDate(now);
 
-            bookDate = bookDate.plusDays(i);
+            bookDate = bookDate.plusDays(1);
             booking.setBookDate(bookDate);
 
             bookingRepository.save(booking);
