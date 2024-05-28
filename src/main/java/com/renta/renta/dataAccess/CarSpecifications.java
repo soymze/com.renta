@@ -40,4 +40,8 @@ public class CarSpecifications {
             return criteriaBuilder.not(criteriaBuilder.exists(subQuery));
         };
     }
+
+    public static Specification<Car> byId(Long carId) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("id"), carId);
+    }
 }

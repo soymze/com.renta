@@ -2,6 +2,7 @@ package com.renta.renta.business.concretes;
 
 import com.renta.renta.business.abstracts.CarService;
 import com.renta.renta.business.dtos.responses.get.car.GetAllCarResponse;
+import com.renta.renta.business.dtos.responses.get.car.GetCarResponse;
 import com.renta.renta.dataAccess.CarRepository;
 import com.renta.renta.dataAccess.CarSpecifications;
 import com.renta.renta.entities.Car;
@@ -47,5 +48,13 @@ public class CarManager implements CarService {
         Page<Car> cars = carRepository.findAll(baseSpecification, pageable);
 
         return cars.stream().map(car-> modelMapperManager.forRequest().map(car, GetAllCarResponse.class)).toList();
+    }
+
+    public GetCarResponse getCarResponseById(Long carId) {
+        return modelMapperManager.forRequest().map(getById(carId), GetCarResponse.class);
+    }
+
+    public Car getById(Long carId) {
+        return carRepository.findOne(CarSpecifications.byId(carId)).orElseThrow(() -> new RuntimeException("Car could not be found"));
     }
 }
