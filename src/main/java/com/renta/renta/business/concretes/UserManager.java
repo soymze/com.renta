@@ -3,7 +3,6 @@ package com.renta.renta.business.concretes;
 import com.renta.renta.business.abstracts.UserService;
 import com.renta.renta.business.dtos.requests.user.UserCreateRequest;
 import com.renta.renta.dataAccess.UserRepository;
-import com.renta.renta.entities.Message;
 import com.renta.renta.entities.User;
 import com.renta.renta.utilities.mapping.ModelMapperManager;
 import com.renta.renta.utilities.results.Result;
@@ -25,5 +24,9 @@ public class UserManager implements UserService {
 
 
         return new SuccessResult("successfully created");
+    }
+
+    public User getById(Integer userId) {
+        return userRepository.findById(userId).orElseThrow(()-> new RuntimeException("user could not be found."));
     }
 }

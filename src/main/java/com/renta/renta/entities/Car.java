@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,7 +37,7 @@ public class Car extends BaseEntity<Integer> {
     private String type;
     @Column(name="price")
     @NotNull(message = "price may not be null")
-    private Integer price;
+    private Double price;
     @Column(name="img_url")
     private String img_url;
 }

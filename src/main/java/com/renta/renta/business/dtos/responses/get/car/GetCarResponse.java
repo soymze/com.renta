@@ -14,6 +14,6 @@ public class GetCarResponse {
     private String model;
     private int year;
     private String fuel;
-    private int price;
+    private Double price;
     private String img_url;
 }

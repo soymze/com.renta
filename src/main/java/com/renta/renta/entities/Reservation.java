@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 
 @Data
 @AllArgsConstructor
@@ -16,6 +18,20 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Reservation extends BaseEntity<Integer> {
-    @Column(name="senderName")
-    private String username;
+
+
+    private String userFullName;
+
+    private String emailAddress;
+
+    private String phoneNumber;
+
+    @ManyToOne
+    private Car car;
+
+    private LocalDate startDate;
+
+    private LocalDate endDate;
+
+    private Double totalPrice;
 }
