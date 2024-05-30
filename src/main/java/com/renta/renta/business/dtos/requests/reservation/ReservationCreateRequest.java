@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Setter
 public class ReservationCreateRequest implements Serializable {
 
-    private Long carId;
+    private Integer carId;
 
     private LocalDate startDate;
 

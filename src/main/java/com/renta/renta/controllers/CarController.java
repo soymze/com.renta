@@ -32,6 +32,6 @@ public class CarController extends BaseController{
     }
     @GetMapping("getbyid/{id}")
     public ResponseEntity<?> getById(@PathVariable int id){
-        return handleDataResult(carService.getById(id));
+        return handleDataResult(carService.getResultById(id));
     }
 }

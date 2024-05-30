@@ -20,7 +20,7 @@ public class ReservationController {
     private ReservationManager reservationManager;
 
     @GetMapping("prepareReservation/{carId}")
-    public ResponseEntity<PrepareReservationResponse> prepareReservation(@PathVariable("carId")Long carId,
+    public ResponseEntity<PrepareReservationResponse> prepareReservation(@PathVariable("carId")Integer carId,
                                                                          @RequestParam(value = "startDate") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate startDate,
                                                                          @RequestParam(value = "endDate") @DateTimeFormat(pattern = "dd.MM.yyyy") LocalDate endDate) {
         return ResponseEntity.ok().body(reservationManager.prepareReservation(carId, startDate, endDate));

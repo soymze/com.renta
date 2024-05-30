@@ -9,12 +9,12 @@ import com.renta.renta.dataAccess.ReservationRepository;
 import com.renta.renta.entities.Booking;
 import com.renta.renta.entities.Car;
 import com.renta.renta.entities.Reservation;
+import com.renta.renta.utilities.results.DataResult;
 import com.renta.renta.utilities.results.Result;
 import com.renta.renta.utilities.results.SuccessResult;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -32,14 +32,14 @@ public class ReservationManager implements ReservationService {
 
     //private UserManager userManager;
 
-    public PrepareReservationResponse prepareReservation(Long carId, LocalDate startDate, LocalDate endDate) {
-        GetCarResponse carResponse = carManager.getCarResponseById(carId);
+    public PrepareReservationResponse prepareReservation(Integer carId, LocalDate startDate, LocalDate endDate) {
+        DataResult<GetCarResponse> carResponse = carManager.getResultById(carId);
 
         long days = DAYS.between(startDate, endDate);
-        double totalPrice = days * carResponse.getPrice();
+        double totalPrice = days * carResponse.getData().getPrice();
 
         return PrepareReservationResponse.builder()
-                .car(carResponse)
+                .car(carResponse.getData())
                 .startDate(startDate)
                 .endDate(endDate)
                 .totalPrice(totalPrice)

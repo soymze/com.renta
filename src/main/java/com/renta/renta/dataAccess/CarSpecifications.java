@@ -41,7 +41,7 @@ public class CarSpecifications {
         };
     }
 
-    public static Specification<Car> byId(Long carId) {
+    public static Specification<Car> byId(Integer carId) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("id"), carId);
     }
 }

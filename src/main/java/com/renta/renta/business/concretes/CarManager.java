@@ -54,10 +54,14 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public DataResult<GetCarResponse> getById(int id) {
+    public DataResult<GetCarResponse> getResultById(Integer id) {
         Car car = carRepository.findById(id);
         GetCarResponse response =
                 mapperService.forResponse().map(car, GetCarResponse.class);
-        return new SuccessDataResult<GetCarResponse>(response);
+        return new SuccessDataResult<>(response);
+    }
+
+    public Car getById(Integer carId) {
+        return carRepository.findOne(CarSpecifications.byId(carId)).orElseThrow(() -> new RuntimeException("Car could not be found"));
     }
 }
