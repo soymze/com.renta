@@ -27,4 +27,6 @@ public class User extends BaseEntity<Integer> {
     @Column(name="mail")
     @NotNull(message = "mail may not be null")
     private String mail;
+
+    private String role;
 }
