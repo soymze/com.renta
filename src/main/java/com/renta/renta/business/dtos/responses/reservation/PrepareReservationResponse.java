@@ -12,10 +12,7 @@ import java.time.LocalDate;
 public class PrepareReservationResponse implements Serializable {
 
     private GetCarResponse car;
-
     private LocalDate startDate;
-
     private LocalDate endDate;
-
     private Double totalPrice;
 }

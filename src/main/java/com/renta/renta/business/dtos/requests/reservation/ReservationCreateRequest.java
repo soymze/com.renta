@@ -11,8 +11,6 @@ import java.time.LocalDate;
 public class ReservationCreateRequest implements Serializable {
 
     private Integer carId;
-
     private LocalDate startDate;
-
     private LocalDate endDate;
 }
