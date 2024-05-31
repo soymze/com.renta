@@ -1,6 +1,7 @@
 package com.renta.renta.security;
 
 import com.renta.renta.business.abstracts.UserService;
+import com.renta.renta.dataAccess.UserRepository;
 import com.renta.renta.entities.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,11 +17,11 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final UserService userService;
+    private final UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userService.getUserByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
+        User user = userRepository.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
         List<SimpleGrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRole()));
         return mapUserToCustomUserDetails(user, authorities);
     }
