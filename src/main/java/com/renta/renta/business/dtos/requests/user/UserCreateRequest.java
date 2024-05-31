@@ -15,7 +15,7 @@ public class UserCreateRequest implements Serializable {
 
     @NotBlank(message = "Please enter a username.")
     @Size(min = 3, max = 30, message = "Please enter a username between 3 and 40 characters.")
-    private String userName;
+    private String username;
     @NotBlank(message = "Please enter your password.")
     @Size(min = 8, max = 20, message = "Password length should be in the range of 8 to 20 characters.")
     private String password;

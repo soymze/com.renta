@@ -17,7 +17,7 @@ public interface UserService {
 
     boolean hasUserWithUsername(String username);
 
-    boolean hasUserWithEmail(String email);
+    boolean hasUserWithMail(String mail);
 
     User saveUser(User user);
 

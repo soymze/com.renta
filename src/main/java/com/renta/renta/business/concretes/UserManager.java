@@ -35,7 +35,7 @@ public class UserManager implements UserService {
 
     @Override
     public Optional<User> getUserByUsername(String username) {
-        return userRepository.findByUserName(username);
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -45,12 +45,12 @@ public class UserManager implements UserService {
 
     @Override
     public boolean hasUserWithUsername(String username) {
-        return userRepository.existsByUserName(username);
+        return userRepository.existsByUsername(username);
     }
 
     @Override
-    public boolean hasUserWithEmail(String email) {
-        return userRepository.existsByMail(email);
+    public boolean hasUserWithMail(String mail) {
+        return userRepository.existsByMail(mail);
     }
 
     @Override

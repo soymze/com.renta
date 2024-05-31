@@ -21,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
         List<SimpleGrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(user.getRole()));
         return mapUserToCustomUserDetails(user, authorities);
     }
@@ -29,10 +29,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private CustomUserDetails mapUserToCustomUserDetails(User user, List<SimpleGrantedAuthority> authorities) {
         CustomUserDetails customUserDetails = new CustomUserDetails();
         customUserDetails.setId(Long.valueOf(user.getId()));
-        customUserDetails.setUsername(user.getUserName());
+        customUserDetails.setUsername(user.getUsername());
         customUserDetails.setPassword(user.getPassword());
-        customUserDetails.setName(user.getUserName());
-        customUserDetails.setEmail(user.getMail());
+        customUserDetails.setName(user.getUsername());
+        customUserDetails.setMail(user.getMail());
         customUserDetails.setAuthorities(authorities);
         return customUserDetails;
     }

@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AuthController {
 
     private final UserService userService;
@@ -47,7 +48,7 @@ public class AuthController {
                 .collect(Collectors.toList());
 
         return ResponseEntity
-                .ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getEmail(), roles));
+                .ok(new JwtResponse(jwt, userDetails.getId(), userDetails.getUsername(), userDetails.getMail(), roles));
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -56,19 +57,21 @@ public class AuthController {
         if (userService.hasUserWithUsername(signUpRequest.getUsername())) {
             throw new DuplicatedUserInfoException(String.format("Username %s is already been used", signUpRequest.getUsername()));
         }
-        if (userService.hasUserWithEmail(signUpRequest.getEmail())) {
-            throw new DuplicatedUserInfoException(String.format("Email %s is already been used", signUpRequest.getEmail()));
+        if (userService.hasUserWithMail(signUpRequest.getMail())) {
+            throw new DuplicatedUserInfoException(String.format("Email %s is already been used", signUpRequest.getMail()));
         }
 
+
         User user = userService.saveUser(createUser(signUpRequest));
-        return new AuthResponse(Long.valueOf(user.getId()), user.getUserName(), user.getRole());
+
+        return new AuthResponse(Long.valueOf(user.getId()), user.getUsername(), user.getRole());
     }
 
     private User createUser(SignUpRequest signUpRequest) {
         User user = new User();
-        user.setUserName(signUpRequest.getUsername());
+        user.setUsername(signUpRequest.getUsername());
         user.setPassword(signUpRequest.getPassword());
-        user.setMail(signUpRequest.getEmail());
+        user.setMail(signUpRequest.getMail());
         user.setRole(WebSecurityConfig.USER);
         return user;
     }

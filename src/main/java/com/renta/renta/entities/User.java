@@ -18,9 +18,9 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class User extends BaseEntity<Integer> {
 
-    @Column(name="name")
+    @Column(name="username")
     @NotNull(message = "name may not be null")
-    private String userName;
+    private String username;
     @Column(name="password")
     @NotNull(message = "password may not be null")
     private String password;

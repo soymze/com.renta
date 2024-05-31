@@ -13,7 +13,7 @@ public class CustomUserDetails implements UserDetails {
     private String username;
     private String password;
     private String name;
-    private String email;
+    private String mail;
     private Collection<? extends GrantedAuthority> authorities;
 
     @Override
